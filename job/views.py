@@ -4,13 +4,13 @@ from .models import Job
 # Create your views here.
 
 
-def jobs_list(request):
-    jobs = Job.objects.all()
-    context = {"jobs": jobs}
-    return render(request, "job/jobs_list.html", context)
+def jobs(request):
+    jobs_all = Job.objects.all()
+    context = {"jobs": jobs_all}
+    return render(request, "job/jobs.html", context)
 
 
-def job_detail(request, id):
+def job_details(request, id):
     job = Job.objects.get(id=id)
     context = {"job": job}
-    return render(request, "job/job_detail.html", context)
+    return render(request, "job/job_details.html", context)
