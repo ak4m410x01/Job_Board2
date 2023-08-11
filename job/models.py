@@ -3,9 +3,9 @@ from django.db import models
 # Create your models here.
 
 JOB_TYPE = (
-    ("F", "Full Time"),
-    ("P", "Part Time"),
-    ("R", "Remote"),
+    ("Full Time", "Full Time"),
+    ("Part Time", "Part Time"),
+    ("Remote", "Remote"),
 )
 
 
@@ -18,7 +18,7 @@ class Category(models.Model):
 
 class Job(models.Model):
     title = models.CharField(max_length=100)
-    job_type = models.CharField(max_length=1, choices=JOB_TYPE)
+    job_type = models.CharField(max_length=15, choices=JOB_TYPE)
     description = models.TextField(max_length=10000, default="")
     published_at = models.DateTimeField(auto_now=True)
     vacancy = models.IntegerField(default=1)
