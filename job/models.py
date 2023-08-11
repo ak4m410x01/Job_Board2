@@ -9,6 +9,13 @@ JOB_TYPE = (
 )
 
 
+class Category(models.Model):
+    name = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.name
+
+
 class Job(models.Model):
     title = models.CharField(max_length=100)
     job_type = models.CharField(max_length=1, choices=JOB_TYPE)
@@ -17,6 +24,7 @@ class Job(models.Model):
     vacancy = models.IntegerField(default=1)
     salary = models.IntegerField(default=0)
     experience = models.IntegerField(default=0)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
 
-    def __str__(self) -> str:
-        return str(self.title)
+    def __str__(self):
+        return self.title
